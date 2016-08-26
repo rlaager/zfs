@@ -40,12 +40,12 @@
 
 verify_runnable "global"
 
-log_assert "zfs fails with unexpected scenarios."
+log_assert "zfs fails with unexpected scenario."
 
 #verify zfs failed if ZFS_DEV cannot be opened
 ZFS_DEV=/dev/zfs
 
-for file in $ZFS_DEV $MNTTAB; do
+for file in $ZFS_DEV; do
 	if [[ -e $file ]]; then
 		$MV $file ${file}.bak
 	fi
@@ -55,4 +55,4 @@ for file in $ZFS_DEV $MNTTAB; do
 	$MV ${file}.bak $file
 done
 
-log_pass "zfs fails with unexpected scenarios as expected."
+log_pass "zfs fails with unexpected scenario as expected."
