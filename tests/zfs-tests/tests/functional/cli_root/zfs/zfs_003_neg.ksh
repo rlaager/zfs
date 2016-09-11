@@ -45,7 +45,12 @@ log_assert "zfs fails with unexpected scenario."
 #verify zfs failed if ZFS_DEV cannot be opened
 ZFS_DEV=/dev/zfs
 
-for file in $ZFS_DEV; do
+if is_linux; then
+	# On Linux, we use /proc/self/mounts, which cannot be moved.
+	MNTTAB=
+fi
+
+for file in $ZFS_DEV $MNTTAB; do
 	if [[ -e $file ]]; then
 		$MV $file ${file}.bak
 	fi
