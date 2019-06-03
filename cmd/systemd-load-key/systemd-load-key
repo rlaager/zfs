@@ -1,0 +1,14 @@
+#!/bin/sh
+
+set -eu
+
+dataset=$1
+
+count=0
+while [ $count -lt 3 ]
+do
+    systemd-ask-password --id="zfs:$dataset" \
+        "Enter passphrase for '$dataset':" | \
+        zfs load-key "$dataset" && break
+    count=$((count + 1))
+done

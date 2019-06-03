@@ -181,7 +181,7 @@ process_line() {
         pathdep="RequiresMountsFor='${p_keyloc#file://}'"
         keyloadcmd="@sbindir@/zfs load-key '${dataset}'"
       elif [ "${p_keyloc}" = "prompt" ] ; then
-  keyloadcmd="sh -c 'systemd-ask-password | @sbindir@/zfs load-key '${dataset}'"
+        keyloadcmd="@pkglibexecdir@/systemd-load-key '${dataset}'"
       else
         printf 'zfs-mount-generator: (%s) invalid keylocation\n' \
           "${dataset}" >/dev/kmsg

@@ -122,6 +122,7 @@ AC_CONFIG_FILES([
 	cmd/zed/Makefile
 	cmd/raidz_test/Makefile
 	cmd/zgenhostid/Makefile
+	cmd/systemd-load-key/Makefile
 	contrib/Makefile
 	contrib/bash_completion.d/Makefile
 	contrib/dracut/Makefile
